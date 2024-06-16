@@ -1,6 +1,8 @@
 import argparse
 from scapy.all import *
 
+# Define the current version
+VERSION = "1.0.1"
 
 # Function for sending the loaded pcap ( Args are the path to the pcap file, the destination ip address, the destination port and if you want to see the payload you are sending )
 def send_payloads(pcap_file, ip_dst, port_dst, debug=False):
@@ -24,6 +26,7 @@ def main():
     parser.add_argument("-p", "--pcap", required=True, help="Path to the pcap file")
     parser.add_argument("-t","--target", required=True, help="Target IP address and port in the format 'IP:port'")
     parser.add_argument("-d","--debug", action="store_true", help="Enable debug mode to show the packet sent")
+    parser.add_argument("-v", "--version", action="version", version=f"%(prog)s {VERSION}", help="Show program's version number and exit")   
     args = parser.parse_args()
 
     # Extract IP and port from --target argument
